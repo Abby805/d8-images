@@ -1,0 +1,7 @@
+name: D8 Images Presentation Demo
+type: theme
+base theme: bartik
+description: "Oh god I'm actually using Bartik for something."
+core: 8.x
+libraries:
+  # - d8_images/global_styles

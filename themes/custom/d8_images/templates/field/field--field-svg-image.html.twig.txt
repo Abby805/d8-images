@@ -1,0 +1,3 @@
+<div class="svg-logo">
+  <img src="{{ img_path }}" alt="{{ alt_text }}" />
+</div>

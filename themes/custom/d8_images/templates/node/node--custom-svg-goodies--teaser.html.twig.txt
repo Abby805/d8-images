@@ -1,0 +1,6 @@
+<div{{ attributes }}>
+  {% if content.field_svg_image|render is empty %}
+    {{ content.field_bitmap_fallback}}
+  {% endif %}
+  {{ content|without('field_img_orientation', 'field_bitmap_fallback') }}
+</div>

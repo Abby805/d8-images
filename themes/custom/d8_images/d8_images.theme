@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+use Drupal\Core\Url;
+
+// function d8_images_preprocess_field(&$variables) {
+//   if ($variables['field_name'] !== 'field_svg_image') {
+//     return;
+//   }
+
+//   $img_path = $variables['items']['0']['content']['#file']->url();
+//   $alt_text = '';
+//   $alt_text = $variables['items']['0']['content']['#description'];
+//   $variables['img_path'] = $img_path;
+//   $variables['alt_text'] = $alt_text;
+// }
+
+// function d8_images_preprocess_node(&$variables) {
+
+//   $node = $variables['node'];
+//   $variables['attributes']['class'][] = 'node-type-' . $node->getType() . '-' . $variables['view_mode'];
+
+//   switch ($node->getType()) {
+//     case 'custom_svg_goodies':
+//       if ($variables['view_mode'] !== 'teaser' || !$node->hasField('field_img_orientation')) {
+//         break;
+//       }
+//       $orientation = $node->get('field_img_orientation')->value;
+//       if (empty($variables['attributes']['class'])) {
+//         $variables['attributes']['class'] = [];
+//       }
+//       $variables['attributes']['class'][] = 'orientation--' . $orientation;
+//       break;
+//     case 'image_style_demo':
+//       hide($variables['content']['field_image_crop']);
+//       if ($variables['content']['field_image_crop'][0]['#markup'] !== 'landscape') {
+//         break;
+//       }
+//       $variables['content']['field_featured_image'][0]['#image_style'] = 'focal_point_landscape';
+//       break;
+//   }
+// }
