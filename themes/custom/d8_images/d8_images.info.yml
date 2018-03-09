@@ -4,4 +4,4 @@ base theme: bartik
 description: "Oh god it uses Bartik."
 core: 8.x
 libraries:
-  # - d8_images/global_styles
+  - d8_images/global_styles

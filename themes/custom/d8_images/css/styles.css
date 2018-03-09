@@ -1,23 +1,12 @@
-/*Grid*/
-.view-logos .view-content {
-  display: flex;
-  align-items: center;
+/* Image orientation */
+.orientation--default img {
+  max-width: 75%;
 }
 
-.view-logos .views-row {
-  width: 23.5%;
-  text-align: center;
-}
-
-.view-logos .views-row:nth-child(4n+1) {
-  margin-left: 0;
-}
-
-/*Orientation*/
-.node-type-custom_svg_goodies-teaser.orientation--vertical img {
+.orientation--square img {
   max-width: 50%;
 }
 
-.node-type-custom_svg_goodies-teaser.orientation--square img {
-  max-width: 75%;
+.orientation--wide img {
+  max-width: 90%;
 }

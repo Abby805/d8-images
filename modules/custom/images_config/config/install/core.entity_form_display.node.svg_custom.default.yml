@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.svg_custom.field_bitmap_fallback
+    - field.field.node.svg_custom.field_orientation
     - field.field.node.svg_custom.field_svg_custom
     - image.style.thumbnail
     - node.type.svg_custom
@@ -28,6 +29,12 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
+  field_orientation:
+    weight: 124
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
     region: content
   field_svg_custom:
     weight: 122

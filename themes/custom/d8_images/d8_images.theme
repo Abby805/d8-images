@@ -30,6 +30,11 @@ function d8_images_preprocess_node__svg_custom(&$variables) {
   if (isset($variables['content']['field_svg_custom']['#items'])) {
     hide($variables['content']['field_bitmap_fallback']);
   }
+
+  // Apply the image orientation as a class
+  $orientation = $variables['node']->get('field_orientation')->value;
+  $variables['attributes']['class'][] = 'orientation--' . $orientation;
+  hide($variables['content']['field_orientation']);
 }
 
 // function d8_images_preprocess_node(&$variables) {
