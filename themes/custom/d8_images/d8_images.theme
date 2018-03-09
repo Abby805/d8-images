@@ -7,6 +7,9 @@
 
 use Drupal\Core\Url;
 
+/**
+ * Implements template_preprocess_field().
+ */
 function d8_images_preprocess_field(&$variables) {
   if ($variables['field_name'] !== 'field_svg_custom') {
     return;
@@ -17,6 +20,16 @@ function d8_images_preprocess_field(&$variables) {
   $alt_text = $variables['items']['0']['content']['#description'];
   $variables['img_path'] = $img_path;
   $variables['alt_text'] = $alt_text;
+}
+
+/**
+ * Implements template_preprocess_node().
+ */
+function d8_images_preprocess_node__svg_custom(&$variables) {
+  // Hide the bitmap fallback image if an svg is present
+  if (isset($variables['content']['field_svg_custom']['#items'])) {
+    hide($variables['content']['field_bitmap_fallback']);
+  }
 }
 
 // function d8_images_preprocess_node(&$variables) {
