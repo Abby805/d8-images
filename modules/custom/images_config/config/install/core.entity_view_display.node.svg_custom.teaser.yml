@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.svg_custom.field_svg_custom
+    - node.type.svg_custom
+  module:
+    - user
+id: node.svg_custom.teaser
+targetEntityType: node
+bundle: svg_custom
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_svg_custom: true

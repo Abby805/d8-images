@@ -7,17 +7,17 @@
 
 use Drupal\Core\Url;
 
-// function d8_images_preprocess_field(&$variables) {
-//   if ($variables['field_name'] !== 'field_svg_image') {
-//     return;
-//   }
+function d8_images_preprocess_field(&$variables) {
+  if ($variables['field_name'] !== 'field_svg_custom') {
+    return;
+  }
 
-//   $img_path = $variables['items']['0']['content']['#file']->url();
-//   $alt_text = '';
-//   $alt_text = $variables['items']['0']['content']['#description'];
-//   $variables['img_path'] = $img_path;
-//   $variables['alt_text'] = $alt_text;
-// }
+  $img_path = $variables['items']['0']['content']['#file']->url();
+  $alt_text = '';
+  $alt_text = $variables['items']['0']['content']['#description'];
+  $variables['img_path'] = $img_path;
+  $variables['alt_text'] = $alt_text;
+}
 
 // function d8_images_preprocess_node(&$variables) {
 

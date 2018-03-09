@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.svg_custom.field_bitmap_fallback
+    - field.field.node.svg_custom.field_svg_custom
+    - node.type.svg_custom
+  module:
+    - file
+    - image
+    - user
+id: node.svg_custom.default
+targetEntityType: node
+bundle: svg_custom
+mode: default
+content:
+  field_bitmap_fallback:
+    weight: 103
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_svg_custom:
+    weight: 102
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: file_default
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
