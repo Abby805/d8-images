@@ -792,3 +792,8 @@ if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['D
 }
 // </DDSETTINGS>
 $settings['install_profile'] = 'standard';
+
+// Making local environment play nice with image styles
+$config_directories = array(
+  CONFIG_SYNC_DIRECTORY => '/Users/abby/Documents/d8-images',
+);
