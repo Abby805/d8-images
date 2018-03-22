@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Url;
+use Drupal\image\Entity\ImageStyle;
 
 /**
  * Implements template_preprocess_field().
@@ -62,3 +63,35 @@ function d8_images_preprocess_node__svg_custom(&$variables) {
 //       break;
 //   }
 // }
+
+/**
+ * Implements template_preprocess_node().
+ */
+function d8_images_preprocess_node__responsive_pic(&$variables) {
+  $node = $variables['elements']['#node'];
+
+  // The 'lg_img' field is required, and we get its url with our 'hero_wide'
+  // image style.
+  $hero_lg_url = ImageStyle::load('hero_wide')->buildUrl($node->field_lg_img->entity->getFileUri());
+
+  // The 'sm_img' field is optional. If it's set, the small url will be the sm_img
+  // field with the 'hero_narrow' image style. If not, it will fall back to the
+  // 'lg_img' field, also with the 'hero_narrow' image style.
+  $hero_sm_url = '';
+
+  if (isset($variables['content']['field_sm_img']['0'])) {
+    $hero_sm_url = ImageStyle::load('hero_narrow')->buildUrl($node->field_sm_img->entity->getFileUri());
+  }
+  else {
+    $hero_sm_url = ImageStyle::load('hero_narrow')->buildUrl($node->field_lg_img->entity->getFileUri());
+  }
+
+  // We pass both urls to the template
+  $variables['hero_lg_url'] = $hero_lg_url;
+  $variables['hero_sm_url'] = $hero_sm_url;
+
+  // The 'lg_img' field has a required alt field. The 'sm_img' field doesn't have
+  // an alt field, since the <picture> element only takes one alt value.
+  $lg_field = $node->get('field_lg_img')->getValue();
+  $variables['hero_alt'] = $lg_field[0]['alt'];
+}
