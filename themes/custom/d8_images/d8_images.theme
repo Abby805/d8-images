@@ -94,4 +94,8 @@ function d8_images_preprocess_node__responsive_pic(&$variables) {
   // an alt field, since the <picture> element only takes one alt value.
   $lg_field = $node->get('field_lg_img')->getValue();
   $variables['hero_alt'] = $lg_field[0]['alt'];
+
+  // Getting the breakpoint we want as defined in breakpoints.yml
+  $breakpoints = \Drupal::service('breakpoint.manager')->getBreakpointsByGroup('Hero Image');
+  $variables['mq'] = $breakpoints['d8_images.heroImage.wide']->getMediaQuery();
 }

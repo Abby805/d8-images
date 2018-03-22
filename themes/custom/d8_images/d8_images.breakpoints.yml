@@ -1,10 +1,5 @@
-# d8_images.bannerImage.narrow:
-#   label: narrow
-#   mediaQuery: ''
-#   weight: 0
-#   group: Banner Image
-# d8_images.bannerImage.wide:
-#   label: wide
-#   mediaQuery: '(min-width: 600px)'
-#   weight: 1
-#   group: Banner Image
+d8_images.heroImage.wide:
+  label: wide
+  mediaQuery: '(min-width: 600px)'
+  weight: 1
+  group: Hero Image
