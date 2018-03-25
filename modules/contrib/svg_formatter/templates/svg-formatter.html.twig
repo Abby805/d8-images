@@ -1,5 +1,0 @@
-{% if inline %}
-  {{ svg_data|raw }}
-{% else %}
-  <img{{ attributes }} src={{ file_url(uri) }} />
-{% endif %}
