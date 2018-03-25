@@ -9,63 +9,40 @@ use Drupal\Core\Url;
 use Drupal\image\Entity\ImageStyle;
 
 /**
- * Implements template_preprocess_field().
- */
-function d8_images_preprocess_field(&$variables) {
-  if ($variables['field_name'] !== 'field_svg_custom') {
-    return;
-  }
-
-  $img_path = $variables['items']['0']['content']['#file']->url();
-  $alt_text = '';
-  $alt_text = $variables['items']['0']['content']['#description'];
-  $variables['img_path'] = $img_path;
-  $variables['alt_text'] = $alt_text;
-}
-
-/**
  * Implements template_preprocess_node().
+ * This lets the content editor choose the orientation of an image to be set
+ * via CSS, not image styles. It's useful for SVGs or for small images with
+ * content that cannot be cropped, such as logos.
  */
-function d8_images_preprocess_node__svg_custom(&$variables) {
-  // Hide the bitmap fallback image if an svg is present
-  if (isset($variables['content']['field_svg_custom']['#items'])) {
-    hide($variables['content']['field_bitmap_fallback']);
-  }
-
-  // Apply the image orientation as a class
+function d8_images_preprocess_node__choose_image_orientation(&$variables) {
+  // Get the value of the orientation field.
   $orientation = $variables['node']->get('field_orientation')->value;
+  // Apply the orientation value as a class at the node level.
   $variables['attributes']['class'][] = 'orientation--' . $orientation;
+  // Hide the display of the orientation field itself.
   hide($variables['content']['field_orientation']);
 }
 
-// function d8_images_preprocess_node(&$variables) {
-
-//   $node = $variables['node'];
-//   $variables['attributes']['class'][] = 'node-type-' . $node->getType() . '-' . $variables['view_mode'];
-
-//   switch ($node->getType()) {
-//     case 'custom_svg_goodies':
-//       if ($variables['view_mode'] !== 'teaser' || !$node->hasField('field_img_orientation')) {
-//         break;
-//       }
-//       $orientation = $node->get('field_img_orientation')->value;
-//       if (empty($variables['attributes']['class'])) {
-//         $variables['attributes']['class'] = [];
-//       }
-//       $variables['attributes']['class'][] = 'orientation--' . $orientation;
-//       break;
-//     case 'image_style_demo':
-//       hide($variables['content']['field_image_crop']);
-//       if ($variables['content']['field_image_crop'][0]['#markup'] !== 'landscape') {
-//         break;
-//       }
-//       $variables['content']['field_featured_image'][0]['#image_style'] = 'focal_point_landscape';
-//       break;
-//   }
-// }
+/**
+ * Implements template_preprocess_node().
+ * This let the content editor choose from several predefined drupal image
+ * styles. The key of each option in the field_image_style field has been set
+ * to the machine name of an image style.
+ */
+function d8_images_preprocess_node__choose_img_style(&$variables) {
+  $node = $variables['node'];
+  // Get the value of the image style field.
+  $img_style = $variables['content']['field_image_style'][0]['#markup'];
+  // Set it as the style of the image field.
+  $variables['content']['field_featured_img'][0]['#image_style'] = $img_style;
+  // Hide the image style field itself.
+  hide($variables['content']['field_image_style']);
+}
 
 /**
  * Implements template_preprocess_node().
+ * This lets the editor use two entirely separate images for use in one
+ * <picture> tag.
  */
 function d8_images_preprocess_node__responsive_pic(&$variables) {
   $node = $variables['elements']['#node'];

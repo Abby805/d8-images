@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: featured_portrait
+label: 'Featured Portrait'
+effects:
+  f3478292-00c4-4137-948a-4a931a92ed41:
+    uuid: f3478292-00c4-4137-948a-4a931a92ed41
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 600
+      height: 900

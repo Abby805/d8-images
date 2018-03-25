@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_image_style
+field_name: field_image_style
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: featured_landscape
+      label: Landscape
+    -
+      value: featured_portrait
+      label: Portrait
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image_style
+    - node.type.choose_img_style
+  module:
+    - options
+id: node.choose_img_style.field_image_style
+field_name: field_image_style
+entity_type: node
+bundle: choose_img_style
+label: 'Image Style'
+description: 'Choose which crop to apply to your image.'
+required: true
+translatable: false
+default_value:
+  -
+    value: featured_landscape
+default_value_callback: ''
+settings: {  }
+field_type: list_string

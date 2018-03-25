@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.choose_img_style.field_featured_img
+    - node.type.choose_img_style
+  module:
+    - user
+id: node.choose_img_style.teaser
+targetEntityType: node
+bundle: choose_img_style
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_featured_img: true
