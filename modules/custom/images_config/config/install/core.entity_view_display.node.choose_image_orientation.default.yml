@@ -2,42 +2,37 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.svg_custom.field_bitmap_fallback
-    - field.field.node.svg_custom.field_orientation
-    - field.field.node.svg_custom.field_svg_custom
-    - node.type.svg_custom
+    - field.field.node.choose_image_orientation.field_grid_img
+    - field.field.node.choose_image_orientation.field_orientation
+    - node.type.choose_image_orientation
   module:
-    - file
-    - image
     - options
+    - svg_image
     - user
-id: node.svg_custom.default
+id: node.choose_image_orientation.default
 targetEntityType: node
-bundle: svg_custom
+bundle: choose_image_orientation
 mode: default
 content:
-  field_bitmap_fallback:
+  field_grid_img:
     weight: 103
-    label: hidden
+    label: visually_hidden
     settings:
+      svg_attributes:
+        width: ''
+        height: ''
+      svg_render_as_image: true
       image_style: ''
       image_link: ''
     third_party_settings: {  }
     type: image
     region: content
   field_orientation:
-    weight: 104
-    label: hidden
+    weight: 102
+    label: visually_hidden
     settings: {  }
     third_party_settings: {  }
     type: list_key
-    region: content
-  field_svg_custom:
-    weight: 102
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: file_default
     region: content
   links:
     weight: 100

@@ -3,17 +3,17 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_orientation
-    - node.type.svg_custom
+    - node.type.choose_image_orientation
   module:
     - options
-id: node.svg_custom.field_orientation
+id: node.choose_image_orientation.field_orientation
 field_name: field_orientation
 entity_type: node
-bundle: svg_custom
+bundle: choose_image_orientation
 label: 'Image Orientation'
-description: 'This is used to help adjust visual spacing when displaying a group of images that may not have the same aspect ratios.'
+description: ''
 required: true
-translatable: false
+translatable: true
 default_value:
   -
     value: default

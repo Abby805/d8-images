@@ -9,5 +9,6 @@ dependencies:
   - node
   - options
   - path
+  - svg_image
   - user
 version: 8.x-1.0

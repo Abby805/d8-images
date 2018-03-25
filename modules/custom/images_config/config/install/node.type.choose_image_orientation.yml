@@ -7,9 +7,9 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: 'Responsive Picture - Multi-Field'
-type: responsive_pic
-description: 'Use completely separate images at different viewport widths in a <picture> tag.'
+name: 'Choose Image Orientation'
+type: choose_image_orientation
+description: 'Choose the orientation of svgs and/or small images such as logos to which you don''t wish to apply an image style.'
 help: ''
 new_revision: false
 preview_mode: 0

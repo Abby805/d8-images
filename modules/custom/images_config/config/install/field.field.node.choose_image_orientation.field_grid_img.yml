@@ -2,23 +2,23 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_bitmap_fallback
-    - node.type.svg_custom
+    - field.storage.node.field_grid_img
+    - node.type.choose_image_orientation
   module:
     - image
-id: node.svg_custom.field_bitmap_fallback
-field_name: field_bitmap_fallback
+id: node.choose_image_orientation.field_grid_img
+field_name: field_grid_img
 entity_type: node
-bundle: svg_custom
-label: 'Bitmap Fallback'
-description: 'Use this field if you do not have an SVG image available. If an SVG is uploaded above, this field will not appear.'
-required: false
+bundle: choose_image_orientation
+label: Image
+description: ''
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
   file_directory: '[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'png gif jpg jpeg'
+  file_extensions: 'png gif jpg jpeg svg'
   max_filesize: ''
   max_resolution: ''
   min_resolution: ''

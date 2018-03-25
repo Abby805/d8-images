@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.choose_image_orientation.field_grid_img
+    - field.field.node.choose_image_orientation.field_orientation
+    - node.type.choose_image_orientation
+  module:
+    - user
+id: node.choose_image_orientation.teaser
+targetEntityType: node
+bundle: choose_image_orientation
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_grid_img: true
+  field_orientation: true
