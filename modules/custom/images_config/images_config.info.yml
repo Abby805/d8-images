@@ -1,4 +1,6 @@
 name: 'Images Config'
+description: 'Feature holding config for D8 Images presentation.'
+package: Custom
 type: module
 core: 8.x
 dependencies:
