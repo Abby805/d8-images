@@ -4,13 +4,18 @@ package: Custom
 type: module
 core: 8.x
 dependencies:
+  - entity_browser
+  - entity_browser_entity_form
   - field
   - file
   - image
+  - media
   - menu_ui
   - node
   - options
   - path
+  - responsive_image
   - svg_image
   - user
+  - views
 version: 8.x-1.0
