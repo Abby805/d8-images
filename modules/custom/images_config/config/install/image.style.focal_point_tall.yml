@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: focal_point_tall
+label: 'Focal Point Tall'
+effects:
+  a9f2ec9e-5b61-47a8-b8aa-087b2c1367a5:
+    uuid: a9f2ec9e-5b61-47a8-b8aa-087b2c1367a5
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 200
+      height: 800
+      crop_type: focal_point

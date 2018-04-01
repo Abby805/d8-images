@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Focal Point Image'
+type: focal_point_image
+description: 'Uses the Focal Point module to let content editors choose the most important point in their image.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

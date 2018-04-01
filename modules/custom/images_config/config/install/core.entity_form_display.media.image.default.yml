@@ -6,7 +6,7 @@ dependencies:
     - image.style.thumbnail
     - media.type.image
   module:
-    - svg_image
+    - focal_point
 id: media.image.default
 targetEntityType: media
 bundle: image
@@ -16,8 +16,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     weight: 1
     region: content
   name:

@@ -8,6 +8,7 @@ dependencies:
   - entity_browser_entity_form
   - field
   - file
+  - focal_point
   - image
   - media
   - menu_ui
