@@ -33,8 +33,9 @@ function d8_images_preprocess_node__choose_img_style(&$variables) {
   $node = $variables['node'];
   // Get the value of the image style field.
   $img_style = $variables['content']['field_image_style'][0]['#markup'];
-  // Set it as the style of the image field.
+  // Set it as the style of the image field and image media field.
   $variables['content']['field_featured_img'][0]['#image_style'] = $img_style;
+  $variables['content']['field_featured_img_media'][0]['#image_style'] = $img_style;
   // Hide the image style field itself.
   hide($variables['content']['field_image_style']);
 }
