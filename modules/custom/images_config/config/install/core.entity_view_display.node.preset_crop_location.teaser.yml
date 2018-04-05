@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.preset_crop_location.field_preset_crop_image
+    - node.type.preset_crop_location
+  module:
+    - user
+id: node.preset_crop_location.teaser
+targetEntityType: node
+bundle: preset_crop_location
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_preset_crop_image: true

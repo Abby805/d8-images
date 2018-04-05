@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies: {  }
+name: profile_alt
+label: 'Profile Alt'
+effects:
+  367c1f2b-4db7-4fed-ba0c-e37cfa5c0a5e:
+    uuid: 367c1f2b-4db7-4fed-ba0c-e37cfa5c0a5e
+    id: image_scale
+    weight: 1
+    data:
+      width: 400
+      height: null
+      upscale: false
+  d47372a4-c8e4-4487-b812-0098a94f6096:
+    uuid: d47372a4-c8e4-4487-b812-0098a94f6096
+    id: image_crop
+    weight: 2
+    data:
+      width: 400
+      height: 400
+      anchor: center-top

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: profile_default
+label: 'Profile Default'
+effects:
+  9a6d848f-f69c-4211-8f23-dbbc4c488ba2:
+    uuid: 9a6d848f-f69c-4211-8f23-dbbc4c488ba2
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 400
+      height: 400
