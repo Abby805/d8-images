@@ -5,17 +5,36 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.choose_image_orientation.field_grid_img
     - field.field.node.choose_image_orientation.field_orientation
+    - image.style.grid_image
     - node.type.choose_image_orientation
   module:
+    - options
+    - svg_image
     - user
 id: node.choose_image_orientation.teaser
 targetEntityType: node
 bundle: choose_image_orientation
 mode: teaser
 content:
-  links:
-    weight: 100
+  field_grid_img:
+    type: image
+    weight: 1
     region: content
+    label: hidden
+    settings:
+      image_style: grid_image
+      image_link: ''
+      svg_render_as_image: '1'
+      svg_attributes:
+        width: ''
+        height: ''
+    third_party_settings: {  }
+  field_orientation:
+    type: list_key
+    weight: 0
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
 hidden:
-  field_grid_img: true
-  field_orientation: true
+  links: true

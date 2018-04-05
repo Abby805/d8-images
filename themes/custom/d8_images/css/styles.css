@@ -10,3 +10,15 @@
 .orientation--wide img {
   max-width: 90%;
 }
+
+/* Image orientation view grid */
+.view-image-grid .view-content {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.view-image-grid .views-row {
+  width: 25%;
+  flex: 0 0 auto;
+}

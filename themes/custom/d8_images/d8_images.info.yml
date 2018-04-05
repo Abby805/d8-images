@@ -1,7 +1,7 @@
 name: D8 Images Demo
 type: theme
 base theme: bartik
-description: "Oh god it uses Bartik."
+description: "By Abby Milberg | DrupalCon 2018 Nashville."
 core: 8.x
 libraries:
   - d8_images/global_styles
