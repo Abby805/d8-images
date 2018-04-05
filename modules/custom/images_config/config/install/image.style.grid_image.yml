@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: grid_image
+label: 'Grid Image'
+effects:
+  9ed1806f-24ec-4929-9b40-199720ed7de4:
+    uuid: 9ed1806f-24ec-4929-9b40-199720ed7de4
+    id: image_scale
+    weight: 1
+    data:
+      width: 300
+      height: null
+      upscale: false

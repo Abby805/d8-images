@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.node.choose_image_orientation.field_grid_img
     - field.field.node.choose_image_orientation.field_orientation
+    - image.style.grid_image
     - node.type.choose_image_orientation
   module:
     - options
@@ -18,12 +19,12 @@ content:
     weight: 103
     label: visually_hidden
     settings:
+      image_style: grid_image
+      image_link: ''
+      svg_render_as_image: '1'
       svg_attributes:
         width: ''
         height: ''
-      svg_render_as_image: true
-      image_style: ''
-      image_link: ''
     third_party_settings: {  }
     type: image
     region: content
