@@ -30,3 +30,9 @@ this customization. */
   width: 16.66%;
   flex: 0 0 auto;
 }
+
+/* Responsive backgrounds */
+.has-responsive-bg {
+  background-size: cover;
+  min-height: 10em; /* just to see background img */
+}

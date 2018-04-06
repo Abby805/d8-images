@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Url;
+use Drupal\media\Entity\Media;
+use \Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
 
 /**
@@ -101,4 +103,38 @@ function d8_images_preprocess_node__responsive_pic(&$variables) {
   // Getting the breakpoint we want as defined in breakpoints.yml
   $breakpoints = \Drupal::service('breakpoint.manager')->getBreakpointsByGroup('Hero Image');
   $variables['mq'] = $breakpoints['d8_images.heroImage.wide']->getMediaQuery();
+}
+
+/**
+ * Implements template_preprocess_node().
+ * We get the url of the image at two different sizes (generated with image)
+ * styles. We apply the small one as the default background via inline css,
+ * and we add both as data attributes, which we will swap out with javascript
+ * for different viewport widths.
+ */
+function d8_images_preprocess_node__background_image(&$variables) {
+  $node = $variables['node'];
+
+  $img_field = $node->get('field_background_image')->first()->getValue();
+  $media = Media::load($img_field['target_id'])->get('field_media_image')->first()->getValue();
+
+  $uri = File::load($media['target_id'])->getFileUri();
+
+  $bg_lg_url = ImageStyle::load('hero_wide')->buildUrl($uri);
+  $bg_sm_url = ImageStyle::load('hero_narrow')->buildUrl($uri);
+
+  // For the sake of this demo, we're applying all of this to the default
+  // attributes array on the <article>, but you could put them anywhere.
+  $variables['attributes']['style'] = 'background-image: url("' . $bg_sm_url . '");';
+  $variables['attributes']['data-bg-sm'] = $bg_sm_url;
+  $variables['attributes']['data-bg-lg'] = $bg_lg_url;
+
+  if (!isset($variables['attributes']['class'])) {
+    $variables['attributes']['class'] = ['has-responsive-bg'];
+  }
+  else {
+    $variables['attributes']['class'][] = 'has-responsive-bg';
+  }
+
+  hide($variables['content']['field_background_image']);
 }

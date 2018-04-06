@@ -3,3 +3,9 @@ global_styles:
   css:
     theme:
       css/styles.css: {}
+  js:
+    js/bg-swap.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal.debounce
