@@ -31,8 +31,8 @@ this customization. */
   flex: 0 0 auto;
 }
 
-/* Responsive backgrounds */
+/* Responsive backgrounds for demo*/
 .has-responsive-bg {
   background-size: cover;
-  min-height: 10em; /* just to see background img */
+  min-height: 30em; /* just to see background img */
 }
