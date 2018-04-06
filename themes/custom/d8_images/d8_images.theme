@@ -44,31 +44,6 @@ function d8_images_preprocess_node__choose_img_style(&$variables) {
 
 /**
  * Implements template_preprocess_node().
- * This lets us pre-set the part of the image that will be preserved during
- * crop without using focal point. Because a regular Drupal "scale and crop"
- * image style won't let you choose the point to preserve, our style uses
- * first a scale, then a crop (choosing the preservation point on the crop).
- * This function makes sure that the image's aspect ratio allow it to still be
- * as tall as needed once it is scaled, and switches out the image style if not.
- */
-function d8_images_preprocess_node__preset_crop_location(&$variables) {
-  $node = $variables['node'];
-
-  $img = $node->field_preset_crop_image->entity->thumbnail[0]->getValue();
-
-  $height = $img['height'];
-  $width = $img['width'];
-  $ratio = $height / $width;
-
-  // The default image style works on landscape images.
-  // If this has a ratio of 1 or more, it's portrait and gets the alt style.
-  if ($ratio > 1) {
-    $variables['content']['field_preset_crop_image'][0]['#image_style'] = 'profile_alt';
-  }
-}
-
-/**
- * Implements template_preprocess_node().
  * This lets the editor use two entirely separate images for use in one
  * <picture> tag.
  */
@@ -103,6 +78,31 @@ function d8_images_preprocess_node__responsive_pic(&$variables) {
   // Getting the breakpoint we want as defined in breakpoints.yml
   $breakpoints = \Drupal::service('breakpoint.manager')->getBreakpointsByGroup('Hero Image');
   $variables['mq'] = $breakpoints['d8_images.heroImage.wide']->getMediaQuery();
+}
+
+/**
+ * Implements template_preprocess_node().
+ * This lets us pre-set the part of the image that will be preserved during
+ * crop without using focal point. Because a regular Drupal "scale and crop"
+ * image style won't let you choose the point to preserve, our style uses
+ * first a scale, then a crop (choosing the preservation point on the crop).
+ * This function makes sure that the image's aspect ratio allow it to still be
+ * as tall as needed once it is scaled, and switches out the image style if not.
+ */
+function d8_images_preprocess_node__preset_crop_location(&$variables) {
+  $node = $variables['node'];
+
+  $img = $node->field_preset_crop_image->entity->thumbnail[0]->getValue();
+
+  $height = $img['height'];
+  $width = $img['width'];
+  $ratio = $height / $width;
+
+  // The default image style works on landscape images.
+  // If this has a ratio of 1 or more, it's portrait and gets the alt style.
+  if ($ratio > 1) {
+    $variables['content']['field_preset_crop_image'][0]['#image_style'] = 'profile_alt';
+  }
 }
 
 /**
