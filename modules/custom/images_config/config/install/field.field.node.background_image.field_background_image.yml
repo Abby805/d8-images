@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_background_image
+    - media.type.image
+    - node.type.background_image
+id: node.background_image.field_background_image
+field_name: field_background_image
+entity_type: node
+bundle: background_image
+label: 'Background Image'
+description: 'This image will appear as the background of the div.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
