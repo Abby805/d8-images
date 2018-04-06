@@ -7,8 +7,8 @@ dependencies:
   module:
     - node
     - user
-id: image_grid
-label: 'Image Grid'
+id: image_grid_default
+label: 'Image Grid (Default Orientation)'
 module: views
 description: ''
 tag: ''
@@ -142,7 +142,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: 'Image Grid (w/ Custom Orientation)'
+      title: 'Image Grid (Equal Width Images)'
       header: {  }
       footer: {  }
       empty: {  }
@@ -164,7 +164,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: image-grid
+      path: image-grid-default
     cache_metadata:
       max-age: -1
       contexts:

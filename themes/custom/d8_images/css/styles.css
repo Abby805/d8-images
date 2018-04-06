@@ -4,21 +4,29 @@
 }
 
 .orientation--square img {
-  max-width: 50%;
+  max-width: 40%;
 }
 
 .orientation--wide img {
   max-width: 90%;
 }
 
+/* Overriding the above to demonstrate what it looks like without
+this customization. */
+.view-image-grid-default img {
+  max-width: 75%;
+}
+
 /* Image orientation view grid */
-.view-image-grid .view-content {
+.view-image-grid .view-content,
+.view-image-grid-default .view-content {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
 }
 
-.view-image-grid .views-row {
-  width: 25%;
+.view-image-grid .views-row,
+.view-image-grid-default .views-row {
+  width: 16.66%;
   flex: 0 0 auto;
 }
