@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_orientation
+    - node.type.choose_image_orientation
+  module:
+    - options
+id: node.choose_image_orientation.field_orientation
+field_name: field_orientation
+entity_type: node
+bundle: choose_image_orientation
+label: 'Image Orientation'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

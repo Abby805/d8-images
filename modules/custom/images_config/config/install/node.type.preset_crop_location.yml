@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Preset Crop Location'
+type: preset_crop_location
+description: 'Demonstrates an image crop that will always focus on a pre-set area of the photo (i.e. top center) without use of the focal point module.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

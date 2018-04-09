@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: featured_landscape
+label: 'Featured Landscape'
+effects:
+  723b4080-ad7c-4f42-a35d-101519a6104d:
+    uuid: 723b4080-ad7c-4f42-a35d-101519a6104d
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 900
+      height: 600

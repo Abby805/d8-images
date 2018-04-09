@@ -1,0 +1,5 @@
+d8_images.heroImage.wide:
+  label: wide
+  mediaQuery: '(min-width: 600px)'
+  weight: 1
+  group: Hero Image

@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.focal_point_image.field_focal_image_field
+    - node.type.focal_point_image
+  module:
+    - user
+id: node.focal_point_image.teaser
+targetEntityType: node
+bundle: focal_point_image
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_focal_image_field: true

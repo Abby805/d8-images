@@ -1,0 +1,12 @@
+name: Entity
+description: Provides expanded entity APIs, which will be moved to Drupal core one day.
+type: module
+# core: 8.x
+dependencies:
+  - drupal:system (>=8.5.0)
+
+# Information added by Drupal.org packaging script on 2018-03-13
+version: '8.x-1.0-beta3'
+core: '8.x'
+project: 'entity'
+datestamp: 1520958515

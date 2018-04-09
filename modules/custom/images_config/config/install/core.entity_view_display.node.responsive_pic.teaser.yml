@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.responsive_pic.field_lg_img
+    - node.type.responsive_pic
+  module:
+    - user
+id: node.responsive_pic.teaser
+targetEntityType: node
+bundle: responsive_pic
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_lg_img: true

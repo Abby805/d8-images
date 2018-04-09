@@ -1,0 +1,22 @@
+name: 'Images Config'
+description: 'Feature holding config for D8 Images presentation.'
+package: Custom
+type: module
+core: 8.x
+dependencies:
+  - entity_browser
+  - entity_browser_entity_form
+  - field
+  - file
+  - focal_point
+  - image
+  - media
+  - menu_ui
+  - node
+  - options
+  - path
+  - responsive_image
+  - svg_image
+  - user
+  - views
+version: 8.x-1.0

@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.choose_image_orientation.field_grid_img
+    - field.field.node.choose_image_orientation.field_orientation
+    - image.style.thumbnail
+    - node.type.choose_image_orientation
+  module:
+    - path
+    - svg_image
+id: node.choose_image_orientation.default
+targetEntityType: node
+bundle: choose_image_orientation
+mode: default
+content:
+  field_grid_img:
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_orientation:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  promote: true
+  status: true
+  sticky: true
+  uid: true

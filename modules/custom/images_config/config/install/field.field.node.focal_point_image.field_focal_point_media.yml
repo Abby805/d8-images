@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_focal_point_media
+    - media.type.image
+    - node.type.focal_point_image
+id: node.focal_point_image.field_focal_point_media
+field_name: field_focal_point_media
+entity_type: node
+bundle: focal_point_image
+label: 'Focal Point Media'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

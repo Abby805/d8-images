@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.background_image.field_background_image
+    - node.type.background_image
+  module:
+    - media
+    - user
+id: node.background_image.default
+targetEntityType: node
+bundle: background_image
+mode: default
+content:
+  field_background_image:
+    type: media_thumbnail
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  links: true

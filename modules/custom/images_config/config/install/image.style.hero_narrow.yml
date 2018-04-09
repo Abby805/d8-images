@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: hero_narrow
+label: 'Hero Narrow'
+effects:
+  6a61f68e-d34c-4c04-8613-afc017b79fd3:
+    uuid: 6a61f68e-d34c-4c04-8613-afc017b79fd3
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 480

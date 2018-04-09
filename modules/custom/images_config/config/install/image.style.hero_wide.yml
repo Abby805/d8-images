@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: hero_wide
+label: 'Hero Wide'
+effects:
+  12a7e72f-e59a-4401-9a4b-7151ed957a06:
+    uuid: 12a7e72f-e59a-4401-9a4b-7151ed957a06
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 400

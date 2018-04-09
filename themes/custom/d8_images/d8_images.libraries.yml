@@ -1,0 +1,11 @@
+global_styles:
+  version: 1.0
+  css:
+    theme:
+      css/styles.css: {}
+  js:
+    js/bg-swap.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal.debounce

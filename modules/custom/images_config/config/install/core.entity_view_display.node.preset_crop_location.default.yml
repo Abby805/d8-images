@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.preset_crop_location.field_preset_crop_image
+    - image.style.profile_default
+    - node.type.preset_crop_location
+  module:
+    - media
+    - user
+id: node.preset_crop_location.default
+targetEntityType: node
+bundle: preset_crop_location
+mode: default
+content:
+  field_preset_crop_image:
+    type: media_thumbnail
+    weight: 0
+    label: hidden
+    settings:
+      image_style: profile_default
+      image_link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  links: true

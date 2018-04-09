@@ -1,0 +1,140 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+use Drupal\Core\Url;
+use Drupal\media\Entity\Media;
+use \Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
+
+/**
+ * Implements template_preprocess_node().
+ * This lets the content editor choose the orientation of an image to be set
+ * via CSS, not image styles. It's useful for SVGs or for small images with
+ * content that cannot be cropped, such as logos.
+ */
+function d8_images_preprocess_node__choose_image_orientation(&$variables) {
+  // Get the value of the orientation field.
+  $orientation = $variables['node']->get('field_orientation')->value;
+  // Apply the orientation value as a class at the node level.
+  $variables['attributes']['class'][] = 'orientation--' . $orientation;
+  // Hide the display of the orientation field itself.
+  hide($variables['content']['field_orientation']);
+}
+
+/**
+ * Implements template_preprocess_node().
+ * This let the content editor choose from several predefined drupal image
+ * styles. The key of each option in the field_image_style field has been set
+ * to the machine name of an image style.
+ */
+function d8_images_preprocess_node__choose_img_style(&$variables) {
+  $node = $variables['node'];
+  // Get the value of the image style field.
+  $img_style = $variables['content']['field_image_style'][0]['#markup'];
+  // Set it as the style of the image field and image media field.
+  $variables['content']['field_featured_img'][0]['#image_style'] = $img_style;
+  $variables['content']['field_featured_img_media'][0]['#image_style'] = $img_style;
+  // Hide the image style field itself.
+  hide($variables['content']['field_image_style']);
+}
+
+/**
+ * Implements template_preprocess_node().
+ * This lets the editor use two entirely separate images for use in one
+ * <picture> tag.
+ */
+function d8_images_preprocess_node__responsive_pic(&$variables) {
+  $node = $variables['elements']['#node'];
+
+  // The 'lg_img' field is required, and we get its url with our 'hero_wide'
+  // image style.
+  $hero_lg_url = ImageStyle::load('hero_wide')->buildUrl($node->field_lg_img->entity->getFileUri());
+
+  // The 'sm_img' field is optional. If it's set, the small url will be the sm_img
+  // field with the 'hero_narrow' image style. If not, it will fall back to the
+  // 'lg_img' field, also with the 'hero_narrow' image style.
+  $hero_sm_url = '';
+
+  if (isset($variables['content']['field_sm_img']['0'])) {
+    $hero_sm_url = ImageStyle::load('hero_narrow')->buildUrl($node->field_sm_img->entity->getFileUri());
+  }
+  else {
+    $hero_sm_url = ImageStyle::load('hero_narrow')->buildUrl($node->field_lg_img->entity->getFileUri());
+  }
+
+  // We pass both urls to the template
+  $variables['hero_lg_url'] = $hero_lg_url;
+  $variables['hero_sm_url'] = $hero_sm_url;
+
+  // The 'lg_img' field has a required alt field. The 'sm_img' field doesn't have
+  // an alt field, since the <picture> element only takes one alt value.
+  $lg_field = $node->get('field_lg_img')->getValue();
+  $variables['hero_alt'] = $lg_field[0]['alt'];
+
+  // Getting the breakpoint we want as defined in breakpoints.yml
+  $breakpoints = \Drupal::service('breakpoint.manager')->getBreakpointsByGroup('Hero Image');
+  $variables['mq'] = $breakpoints['d8_images.heroImage.wide']->getMediaQuery();
+}
+
+/**
+ * Implements template_preprocess_node().
+ * This lets us pre-set the part of the image that will be preserved during
+ * crop without using focal point. Because a regular Drupal "scale and crop"
+ * image style won't let you choose the point to preserve, our style uses
+ * first a scale, then a crop (choosing the preservation point on the crop).
+ * This function makes sure that the image's aspect ratio allow it to still be
+ * as tall as needed once it is scaled, and switches out the image style if not.
+ */
+function d8_images_preprocess_node__preset_crop_location(&$variables) {
+  $node = $variables['node'];
+
+  $img = $node->field_preset_crop_image->entity->thumbnail[0]->getValue();
+
+  $height = $img['height'];
+  $width = $img['width'];
+  $ratio = $height / $width;
+
+  // The default image style works on landscape images.
+  // If this has a ratio of 1 or more, it's portrait and gets the alt style.
+  if ($ratio > 1) {
+    $variables['content']['field_preset_crop_image'][0]['#image_style'] = 'profile_alt';
+  }
+}
+
+/**
+ * Implements template_preprocess_node().
+ * We get the url of the image at two different sizes (generated with image)
+ * styles. We apply the small one as the default background via inline css,
+ * and we add both as data attributes, which we will swap out with javascript
+ * for different viewport widths.
+ */
+function d8_images_preprocess_node__background_image(&$variables) {
+  $node = $variables['node'];
+
+  $img_field = $node->get('field_background_image')->first()->getValue();
+  $media = Media::load($img_field['target_id'])->get('field_media_image')->first()->getValue();
+
+  $uri = File::load($media['target_id'])->getFileUri();
+
+  $bg_lg_url = ImageStyle::load('hero_wide')->buildUrl($uri);
+  $bg_sm_url = ImageStyle::load('hero_narrow')->buildUrl($uri);
+
+  // For the sake of this demo, we're applying all of this to the default
+  // attributes array on the <article>, but you could put them anywhere.
+  $variables['attributes']['style'] = 'background-image: url("' . $bg_sm_url . '");';
+  $variables['attributes']['data-bg-sm'] = $bg_sm_url;
+  $variables['attributes']['data-bg-lg'] = $bg_lg_url;
+
+  if (!isset($variables['attributes']['class'])) {
+    $variables['attributes']['class'] = ['has-responsive-bg'];
+  }
+  else {
+    $variables['attributes']['class'][] = 'has-responsive-bg';
+  }
+
+  hide($variables['content']['field_background_image']);
+}

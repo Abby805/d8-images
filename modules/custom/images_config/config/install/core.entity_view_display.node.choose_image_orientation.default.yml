@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.choose_image_orientation.field_grid_img
+    - field.field.node.choose_image_orientation.field_orientation
+    - image.style.grid_image
+    - node.type.choose_image_orientation
+  module:
+    - options
+    - svg_image
+    - user
+id: node.choose_image_orientation.default
+targetEntityType: node
+bundle: choose_image_orientation
+mode: default
+content:
+  field_grid_img:
+    weight: 103
+    label: visually_hidden
+    settings:
+      image_style: grid_image
+      image_link: ''
+      svg_attributes:
+        width: ''
+        height: ''
+      svg_render_as_image: 0
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_orientation:
+    weight: 102
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
